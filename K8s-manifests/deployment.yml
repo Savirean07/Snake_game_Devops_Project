@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snake-game-app
+  namespace: snake-game
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: snake-game-app
+  template:
+    metadata:
+      labels:
+        app: snake-game-app
+    spec:
+      containers:
+        - name: app
+          image: mahmoudabdelnaser99/ivolve-app:latest  
+          ports:
+            - containerPort: 5000
