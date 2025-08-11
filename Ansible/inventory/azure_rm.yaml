@@ -1,0 +1,19 @@
+plugin: azure.azcollection.azure_rm
+include_vm_resource_groups:
+  - my-resource-group   # Replace with your Azure Resource Group name
+
+auth_source: auto  # Uses Azure CLI or environment variables for authentication
+
+keyed_groups:
+  - key: tags.Name
+    prefix: ""
+
+filters:
+  tag:Name:
+    - "jenkins-master"
+    - "jenkins-slave"
+    - "kubemaster"
+    - "kubenode1"
+
+compose:
+  ansible_host: public_ip_address
